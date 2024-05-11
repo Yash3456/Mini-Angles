@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 const Menu = ({toggleModal,navi,setnavi,navigation}) => {
   return (
+    <View style={{width:"100%", height:"100%",display:"flex",flexDirection:"row"}}>
     <View style={{flex:1,paddingVertical:20,flexDirection:"column",backgroundColor:"white",width:"70%",borderTopRightRadius:20,borderBottomRightRadius:20}}>
       <View style={{flex:1,alignItems:"center",justifyContent:"center",maxHeight:"10%"}}>
         <Text style={{fontSize:34}}>Mini Angles</Text>
@@ -32,8 +33,14 @@ const Menu = ({toggleModal,navi,setnavi,navigation}) => {
       </View>
 
       <View style={{flex:1,alignItems:"flex-start",justifyContent:"center",maxHeight:"10%",marginHorizontal:"20%"}}>
-      <Text style={{fontSize:18,fontWeight:"900"}} onPress={()=> navigation.navigate("Splash") }>Logout</Text>
+      <Text style={{fontSize:18,fontWeight:"900"}} onPress={()=> navigation?.navigate("Splash") }>Logout</Text>
       </View>
+    </View>
+
+    <View style={{width:"30%", height:"100%"}}>
+    <Text style={{width:"100%",height:"100%"}} onPress={()=> toggleModal()}></Text>
+    </View>
+
     </View>
   );
 }
