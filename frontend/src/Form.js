@@ -10,10 +10,11 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-const Page = ({Navigation}) => {
-  const [countryCode, setCountryCode] = useState('+49');
+const Page = ({navigation}) => {
+  const [countryCode, setCountryCode] = useState('+91');
   const [phoneNumber, setPhoneNumber] = useState('');
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
+  const [selected, setselected]= useState(false);
 
  const onSignup = () => {
     
@@ -21,20 +22,22 @@ const Page = ({Navigation}) => {
 
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1, borderWidth:4,  borderColor:"red" }}
+      style={{ flex: 1}}
       behavior="padding"
       keyboardVerticalOffset={keyboardVerticalOffset}>
       <View style={defaultStyles.container}>
-        <Text style={defaultStyles.header}>Let's get started!</Text>
+        <View style={styles.container}>
+        <Text style={defaultStyles.header}>Continue With Phone number</Text>
         <Text style={defaultStyles.descriptionText}>
-          Enter your phone number. We will send you a confirmation code there
+        Provide your phone number. We will send you confirmation code.
         </Text>
         <View style={styles.inputContainer}>
           <TextInput
-            style={styles.input}
+            style={[styles.input, { borderColor: `${selected === true ? "#FE804D" : "black" }`}]}
             placeholder="Country code"
             placeholderTextColor={Colors.gray}
             value={countryCode}
+            onPress={()=> setselected(true)}
           />
           <TextInput
             style={[styles.input, { flex: 1 }]}
@@ -47,9 +50,7 @@ const Page = ({Navigation}) => {
         </View>
 
         <View replace asChild>
-          <TouchableOpacity onPress={()=> Navigation.navigate("Screen1")}>
-            <Text style={defaultStyles.textLink}>Already have an account? Log in</Text>
-          </TouchableOpacity>
+            <Text style={styles.account} >Already have an account? <Text style={defaultStyles.textLink} onPress={()=> navigation.navigate("Splash")}>Log in</Text></Text>
         </View>
 
         <View style={{ flex: 1 }} />
@@ -63,6 +64,7 @@ const Page = ({Navigation}) => {
           onPress={onSignup}>
           <Text style={defaultStyles.buttonText}>Sign up</Text>
         </TouchableOpacity>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );
@@ -73,11 +75,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   input: {
-    backgroundColor: Colors.lightGray,
+    backgroundColor: "white",
+    borderWidth:1,
     padding: 20,
     borderRadius: 16,
     fontSize: 20,
     marginRight: 10,
+    width:"25%"
   },
   enabled: {
     backgroundColor: Colors.primary,
@@ -85,5 +89,17 @@ const styles = StyleSheet.create({
   disabled: {
     backgroundColor: Colors.primaryMuted,
   },
+  container:{
+    flex:1,
+    paddingHorizontal:16,
+    paddingVertical:25,
+    marginTop:"16%",
+    borderRadius:30,
+    marginBottom:"10%",
+    backgroundColor:"white"
+  },
+  account:{
+    fontSize:16
+  }
 });
 export default Page;

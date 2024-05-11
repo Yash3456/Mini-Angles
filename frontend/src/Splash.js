@@ -4,21 +4,13 @@ import * as Animatable from 'react-native-animatable';
 
 const Splash = ({navigation}) => {
 
- useEffect(()=>{
-
- setTimeout(() => {
-    navigation.navigate('Screen2')
- }, 10000);
-
- },[])
-
   return (
    <View style={styles.container}>
      <Image source={require("../assets/introimage.png")} />
      <Animatable.Text style={styles.title}>
      Spend as you wish
      </Animatable.Text>
-     <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Screen3')} >
+     <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Mobile')} >
        <Text style={styles.buttontext}>Get Started</Text>
      </TouchableOpacity>
    </View>

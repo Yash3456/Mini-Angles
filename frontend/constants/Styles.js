@@ -8,7 +8,7 @@ export const defaultStyles = StyleSheet.create({
     padding: 16,
   },
   header: {
-    fontSize: 40,
+    fontSize: 24,
     fontWeight: '700',
   },
   pillButton: {
@@ -20,12 +20,12 @@ export const defaultStyles = StyleSheet.create({
   },
   textLink: {
     color: Colors.primary,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '500',
   },
   descriptionText: {
-    fontSize: 18,
-    marginTop: 20,
+    fontSize: 14,
+    marginTop: 10,
     color: Colors.gray,
   },
   buttonText: {
