@@ -1,0 +1,19 @@
+from django.db import models
+
+class BorrowerProfile(models.Model):
+    class Meta:
+        unique_together = (('first_name', 'last_name'),)
+
+    first_name      = models.CharField(max_length=100)
+    last_name       = models.CharField(max_length=100)
+    education       = models.CharField(max_length=100)
+    employment_type = models.CharField(max_length=400)
+    monthly_income  = models.PositiveIntegerField()
+
+class LoanApplication(models.Model):
+    borrower  = models.ForeignKey(BorrowerProfile, on_delete=models.CASCADE)
+    amount    = models.CharField(max_length=100)
+    approval  = models.CharField(max_length=100)
+    disbursed = models.BooleanField(default=False)
+    lender    = models.CharField(max_length=100)
+
