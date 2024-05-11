@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Button, FlatList, Animated, useWindowDimensions, PixelRatio} from 'react-native';
 import { SkImage, makeImageFromView, Canvas, Circle, Group, Image, Mask } from "@shopify/react-native-skia";
-import Slides from "../data";
-import Renderitem from './components/renderitem';
-import Custombutton from './components/Custombutton';
+import Slides from "../../data";
+import Renderitem from '../components/renderitem';
+import Custombutton from '../components/Custombutton';
 import { useSharedValue, withTiming } from 'react-native-reanimated';
-import Pagination from './components/Pagination';
+import Pagination from '../components/Pagination';
 import Modal from "react-native-modal";
-import ModalButtton from './components/ModalButtton';
+import ModalButtton from '../components/ModalButtton';
 // import { useFonts } from 'expo-font';
 // import * as SplashScreen from 'expo-splash-screen';
 

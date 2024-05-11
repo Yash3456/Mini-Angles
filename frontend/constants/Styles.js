@@ -9,10 +9,10 @@ export const defaultStyles = StyleSheet.create({
   },
   header: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: '500',
+    paddingHorizontal:6
   },
   pillButton: {
-    padding: 10,
     height: 60,
     borderRadius: 40,
     justifyContent: 'center',
@@ -20,12 +20,13 @@ export const defaultStyles = StyleSheet.create({
   },
   textLink: {
     color: Colors.primary,
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 12,
+    fontWeight: '400',
   },
   descriptionText: {
-    fontSize: 14,
-    marginTop: 10,
+    fontSize: 12,
+    marginTop: 8,
+    marginLeft:10,
     color: Colors.gray,
   },
   buttonText: {

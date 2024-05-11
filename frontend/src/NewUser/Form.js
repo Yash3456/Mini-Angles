@@ -1,5 +1,6 @@
-import Colors from '../constants/Colors';
-import { defaultStyles } from '../constants/Styles';
+
+import Colors from '../../constants/Colors';
+import { defaultStyles } from '../../constants/Styles';
 import { useState } from 'react';
 import {
   View,
@@ -17,7 +18,7 @@ const Page = ({navigation}) => {
   const [selected, setselected]= useState(false);
 
  const onSignup = () => {
-    
+    navigation.navigate("Verify");
  }
 
   return (

@@ -6,9 +6,14 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import Animated from 'react-native-reanimated';
-import Splash from './src/Splash';
-import Intro from './src/Intro';
-import Form from './src/Form';
+import Splash from './src/NewUser/Splash';
+import Intro from './src/NewUser/Intro';
+import Form from './src/NewUser/Form';
+import Page from './src/verification/verify';
+import Verify from './src/verification/verify';
+import ProfileForm from './src/NewUser/ProfileForm';
+import DocumentForm from './src/NewUser/Documents';
+import Home from './src/HomeScreen/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +31,27 @@ export default function App() {
      component={Form}
      options={{ headerShown: false }}
    />
+   <Stack.Screen
+     name="Verify"
+     component={Verify}
+     options={{ headerShown: false }}
+   />
+   <Stack.Screen
+     name="Profileform"
+     component={ProfileForm}
+     options={{ headerShown: false }}
+   />
+   <Stack.Screen
+     name="Documentform"
+     component={DocumentForm}
+     options={{ headerShown: false }}
+   />
+
+   <Stack.Screen
+   name="Home"
+   component={Home}
+   options={{ headerShown: false }}
+ />
    
  {
   /**

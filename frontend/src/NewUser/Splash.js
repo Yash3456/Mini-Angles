@@ -6,7 +6,7 @@ const Splash = ({navigation}) => {
 
   return (
    <View style={styles.container}>
-     <Image source={require("../assets/introimage.png")} />
+     <Image source={require("../../assets/introimage.png")} />
      <Animatable.Text style={styles.title}>
      Spend as you wish
      </Animatable.Text>
