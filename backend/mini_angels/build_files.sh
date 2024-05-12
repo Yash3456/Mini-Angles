@@ -7,6 +7,8 @@ pip3 install --upgrade pip
 
 pip3 install --upgrade --force-reinstall -r requirements.txt
 
+sed -i 's/_sqlite3/sqlite3/g' /python312/lib/python3.12/sqlite3/dbapi2.py
+
 python3 manage.py makemigrations --noinput
 
 python3 manage.py migrate --noinput
