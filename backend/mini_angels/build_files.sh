@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum install -y libsqlite3-dev
+yum install -y sqlite3
 
 pip3 install -r requirements.txt --user
 
