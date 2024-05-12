@@ -2,7 +2,7 @@
 
 yum list | grep sqlite
 
-yum install -y sqlite3
+yum install -y sqlite
 
 pip3 install -r requirements.txt --user
 
