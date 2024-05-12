@@ -29,7 +29,7 @@ def verify_mobile(request):
             project_id="a3528128-7c4f-47cc-85ba-f5dc0555b9a4"
         )
 
-        mobile = "+91{}".format("9994421694")
+        # mobile = "+91{}".format("9994421694")
         send_batch_response = sinch_client.sms.batches.send(
             body="Your Mini Angel verification code is: {}".format(otp),
             to=[mobile],
