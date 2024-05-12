@@ -14,9 +14,11 @@ yum install -y wget tar
 
 wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tar.xz
 tar -xvf Python-3.12.0.tgz
+cd Python-3.12.0
 ./configure --enable-optimizations --with-ensurepip=install
 make
 make install
+cd -
 
 # yum update
 
