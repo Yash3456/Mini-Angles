@@ -5,7 +5,7 @@
 # yum install -y mysql
 pip3 install --upgrade pip
 
-pip3 install -r requirements.txt --user
+pip3 install --upgrade -r requirements.txt --user
 
 python3 manage.py makemigrations --noinput
 
