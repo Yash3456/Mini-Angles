@@ -12,7 +12,7 @@
             "use": "@vercel/python",
             "config": {
                 "maxLamdaSize": "15mb",
-                "runtime": "python3.11"
+                "runtime": "python3.12"
             }
         }
     ],
