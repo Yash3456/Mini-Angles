@@ -10,6 +10,12 @@ from .ModelInterface import (
     LoanApplicationModel
 )
 
+from .ModelField import (
+    BorrowerProfileFields,
+    OtpVerificationFields,
+    LoanApplicationFields
+)
+
 @api_view(["POST"])
 def verify_mobile(request):
     print("Triggered")
@@ -31,7 +37,7 @@ def verify_mobile(request):
             delivery_report="none"
         )
 
-        OtpVerificationModel().insert(mobile, otp)
+        OtpVerificationModel().insert(OtpVerificationFields(mobile, otp))
 
         print(send_batch_response)
     except Exception as err:
@@ -73,12 +79,12 @@ def save_profile(request):
         employment_type  = request.data.get("employment_type")
         monthly_income   = request.data.get("monthly_income")
 
-        BorrowerProfileModel().insert(mobile,
+        BorrowerProfileModel().insert(BorrowerProfileFields(mobile,
                                 first_name,
                                 last_name,
                                 education,
                                 employment_type,
-                                monthly_income)
+                                monthly_income))
     except Exception as err:
         err_msg = "Failed to generate data values file - {}".format(err)
         return Response({"message": err_msg}, status=500)
@@ -94,11 +100,11 @@ def loan_application(request):
         approval         = "Approved"
         lender           = ""
 
-        LoanApplicationModel().insert(mobile,
+        LoanApplicationModel().insert(LoanApplicationFields(mobile,
                             loan_amount,
                             period,
                             approval,
-                            lender)
+                            lender))
     except Exception as err:
         err_msg = "Failed to generate data values file - {}".format(err)
         return Response({"message": err_msg}, status=500)
