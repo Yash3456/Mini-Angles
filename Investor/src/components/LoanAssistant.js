@@ -11,14 +11,15 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-const Page = ({navigation}) => {
-  const [countryCode, setCountryCode] = useState('+91');
-  const [phoneNumber, setPhoneNumber] = useState('');
+import Budget from './Slider';
+const LoanAssistant = ({navigation}) => {
+  const [Period, setPeriod] = useState('');
+  const [amount, setamount] = useState('');
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
   const [selected, setselected]= useState(false);
 
  const onSignup = () => {
-    navigation.navigate("Verify");
+    navigation.navigate("Home");
  }
 
   return (
@@ -28,43 +29,51 @@ const Page = ({navigation}) => {
       keyboardVerticalOffset={keyboardVerticalOffset}>
       <View style={defaultStyles.container}>
         <View style={styles.container}>
-        <Text style={defaultStyles.header}>Continue With Phone number</Text>
+        <Text style={defaultStyles.header}>Loan Application</Text>
         <Text style={defaultStyles.descriptionText}>
-        Provide your phone number. We will send you confirmation code.
+        Please select a range of amount you want to take it as a loan
         </Text>
+        <Text style={{fontSize:20,marginTop:18.84,marginLeft:10}}>Amount</Text>
         <View style={styles.inputContainer}>
           <TextInput
-            style={[styles.input, { borderColor: `${selected === true ? "#FE804D" : "black" }`}]}
-            placeholder="Country code"
-            placeholderTextColor={Colors.gray}
-            value={countryCode}
-            onPress={()=> setselected(true)}
-          />
-          <TextInput
             style={[styles.input, { flex: 1 }]}
-            placeholder="Mobile number"
+            placeholder="Enter you amount..."
             placeholderTextColor={Colors.gray}
             keyboardType="numeric"
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
+            value={amount}
+            onChangeText={setamount}
           />
         </View>
 
-        <View replace asChild>
-            <Text style={styles.account} >Already have an account? <Text style={defaultStyles.textLink} onPress={()=> navigation.navigate("Splash")}>Log in</Text></Text>
+        <Budget/>
+
+        <Text style={{fontSize:20,marginTop:18.84,marginLeft:10}}>Period</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={[styles.input, { flex: 1 }]}
+            placeholder="Enter duration of the loan ..."
+            placeholderTextColor={Colors.gray}
+            keyboardType="numeric"
+            value={Period}
+            onChangeText={setPeriod}
+          />
         </View>
 
-        <View style={{ flex: 1 }} />
 
         <TouchableOpacity
           style={[
             defaultStyles.pillButton,
-            phoneNumber !== '' ? styles.enabled : styles.disabled,
-            { marginBottom: 20 },
+            amount !== "₹10,000" ? styles.enabled : styles.disabled,
+            { marginTop:30,width:"70%",marginHorizontal:"auto" },
           ]}
-          onPress={onSignup}>
-          <Text style={defaultStyles.buttonText}>Sign up</Text>
+          onPress={()=> navigation.navigate("VerifiedLoan")}>
+          <Text style={defaultStyles.buttonText}>Next</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+        style={{fontSize:15,fontWeight:"600"}}
+        onPress={onSignup}>
+        <Text style={[defaultStyles.buttonText,{color:"#000",marginHorizontal:"auto",marginTop:20}]}>Cancel</Text>
+      </TouchableOpacity>
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -72,7 +81,7 @@ const Page = ({navigation}) => {
 };
 const styles = StyleSheet.create({
   inputContainer: {
-    marginVertical: 40,
+    marginVertical: 10,
     flexDirection: 'row',
   },
   input: {
@@ -80,7 +89,7 @@ const styles = StyleSheet.create({
     borderWidth:1,
     padding: 20,
     borderRadius: 16,
-    fontSize: 20,
+    fontSize: 15,
     marginRight: 10,
     width:"25%"
   },
@@ -103,4 +112,4 @@ const styles = StyleSheet.create({
     fontSize:16
   }
 });
-export default Page;
+export default LoanAssistant;
