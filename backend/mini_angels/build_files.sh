@@ -1,8 +1,8 @@
 #!/bin/bash
 
-yum list | grep sqlite
+# yum list | grep sqlite
 
-yum install -y sqlite
+yum install -y mysql
 
 pip3 install -r requirements.txt --user
 
