@@ -2,10 +2,9 @@
     "builds": [
         {
             "src": "mini_angels/wsgi.py",
-            "use": "@vercel/python",
+            "use": "@ardnt/vercel-python-wsgi",
             "config": {
-                "maxLamdaSize": "15mb",
-                "runtime": "python3.11"
+                "maxLamdaSize": "15mb"
             }
         }
     ],
