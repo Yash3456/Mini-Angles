@@ -12,6 +12,7 @@ from .ModelInterface import (
 
 @api_view(["POST"])
 def verify_mobile(request):
+    print("Triggered")
     try:
         mobile       = request.data.get("mobile")
         otp = random.randint(1000,9999)
