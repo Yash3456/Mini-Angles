@@ -14,13 +14,5 @@
             "src": "/(.*)",
             "dest": "mini_angels/wsgi.py"
         }
-    ],
-    "functions": {
-        "borrower/migrate": {
-            "runtime": "@vercel/python3.11"
-        }
-    },
-    "hooks": {
-        "postdeploy": "borrower/migrate"
-    }
+    ]
 }
