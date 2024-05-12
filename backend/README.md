@@ -5,7 +5,7 @@
 - Have Python 3 pip installed
 - Have required Python packages installed
    ```bash
-   python -m pip install django djangorestframework django-cors-headers django-crispy-forms
+   python -m pip install django djangorestframework django-cors-headers django-crispy-forms sinch
    ```
 
 ## Running the Server
