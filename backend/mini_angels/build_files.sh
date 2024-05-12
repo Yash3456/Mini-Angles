@@ -6,13 +6,14 @@
 
 yum remove -y python3.12
 
-yum install -y wget
+yum install -y wget tar
 
 # yum install gcc openssl-devel zlib-devel ncurses-devel readline-devel sqlite-devel \
 #     gdbm-devel libdb-devel libbz2-devel expat-devel libffi-devel xz-devel tk-devel
 
 
 wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tar.xz
+tar -xvf Python-3.12.0.tgz
 ./configure --enable-optimizations --with-ensurepip=install
 make
 make install
