@@ -4,3 +4,4 @@ django-crispy-forms
 djangorestframework
 sinch
 db-sqlite3
+pysqlite3
