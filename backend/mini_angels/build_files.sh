@@ -6,6 +6,8 @@
 
 yum remove -y python3.12
 
+yum install -y wget
+
 wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tar.xz
 ./configure --enable-loadable-sqlite-extensions --enable-optimizations
 make
@@ -13,7 +15,7 @@ make install
 
 yum update
 
-yum install -y sqlite-devel
+yum install -y python3-pip sqlite-devel
 
 pip3 install --upgrade pip
 
