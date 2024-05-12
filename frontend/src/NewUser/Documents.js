@@ -15,6 +15,7 @@ import {
   Image
 } from 'react-native';
 import {Ionicons} from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 const DocumentForm = ({navigation}) => {
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
@@ -22,6 +23,93 @@ const DocumentForm = ({navigation}) => {
  const onSignup = () => {
     navigation.navigate("Home");
  }
+ 
+ const [Selfie, setSelfie] = useState(null);
+ const [SelfieVideo, setVideo] = useState(null);
+ const [AddressProof, setAddressProof] = useState(null);
+ const [PANCard, setPANCard] = useState(null);
+ const [AadharCard, setAadharCard] = useState(null);
+
+  const pickAadharCard = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setAadharCard(result.assets[0].uri);
+    }
+  };
+
+  const pickSelfie = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setSelfie(result.assets[0].uri);
+    }
+  };
+
+  const pickSelfieVideo = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setVideo(result.assets[0].uri);
+    }
+  };
+
+  const pickAddressProof = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setAddressProof(result.assets[0].uri);
+    }
+  };
+
+  const pickPANCard = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.canceled) {
+      setPANCard(result.assets[0].uri);
+    }
+  };
+
 
   return (
     <KeyboardAvoidingView
@@ -34,43 +122,62 @@ const DocumentForm = ({navigation}) => {
         Upload all the below required documents.
         </Text>
         <View style={styles.inputContainer}>
-         <View style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}}> 
-        
-         <View style={{width:"90%"}}>
+         <TouchableOpacity style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}} onPress={pickSelfie}> 
+         <View style={{width:"90%"}} >
          <Image source={require("../../assets/Frame1.png")} style={{width:120,height:56}} />
          </View>
          
-         <Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />
+         {
+          Selfie === null ? (<Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />) : (<Image source={require("../../assets/check.png")} style={{width:34,height:34}} />)
+         }
          
-         </View>
-         <View style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}}> 
+         </TouchableOpacity>
+
+         <TouchableOpacity style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}} onPress={pickSelfieVideo}> 
          <View style={{width:"90%"}}>
          <Image source={require("../../assets/Frame2.png")} style={{width:170,height:56}} />
          </View>
-         <Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />
-         
-         </View>
-         <View style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}}> 
+        
+          {
+            SelfieVideo === null ? (<Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />) : (<Image source={require("../../assets/check.png")} style={{width:34,height:34}} />)
+          }
+
+         </TouchableOpacity>
+
+         <TouchableOpacity style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}} onPress={pickAddressProof}> 
          <View style={{width:"90%"}}>
          <Image source={require("../../assets/Frame3.png")} style={{width:190,height:56}} />
          </View>
-         <Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />
-         
-         </View>
-         <View style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}}> 
+ 
+          {
+            AddressProof === null ? (<Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />) : (<Image source={require("../../assets/check.png")} style={{width:34,height:34}} />)
+
+          }
+
+         </TouchableOpacity>
+
+         <TouchableOpacity style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}} onPress={pickPANCard}> 
          <View style={{width:"90%"}}>
          <Image source={require("../../assets/Frame4.png")} style={{width:150,height:56}} />
          </View>
-         <Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />
-         
-         </View>
-         <View style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}}> 
+
+         {
+          PANCard === null ? (<Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />) : (<Image source={require("../../assets/check.png")} style={{width:34,height:34}} />)
+         }
+
+         </TouchableOpacity>
+
+         <TouchableOpacity style={{flex:1,flexDirection:"row",borderWidth:2,borderColor:"#1C1B1F80",paddingHorizontal:34,paddingVertical:40,borderRadius:20,alignItems:"center",marginVertical:10}} onPress={pickAadharCard}> 
          <View style={{width:"90%"}}>
          <Image source={require("../../assets/Frame5.png")} style={{width:180,height:56}} />
          </View>
-         <Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />
-         
-         </View>
+ 
+         {
+          AadharCard === null ? (<Image source={require("../../assets/arrow_forward_ios.png")} style={{width:12,height:20}} />) : (<Image source={require("../../assets/check.png")} style={{width:34,height:34}} />)
+
+         }
+
+         </TouchableOpacity>
         </View>
         
 <TouchableOpacity

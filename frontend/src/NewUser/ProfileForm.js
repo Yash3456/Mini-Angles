@@ -47,7 +47,7 @@ const ProfileForm = ({navigation}) => {
         onPress={() => setChecked(!checked)}>
         {checked && <Ionicons name="checkmark" size={24} color="white" />}
       </Pressable>
-             <Text style={[defaultStyles.textLink,{color:"#1C1B1F",width:"90%",marginHorizontal:"4%",lineHeight:16}]} onPress={()=> navigation.navigate("Splash")}>I declare the above information is correct
+             <Text style={[defaultStyles.textLink,{color:"#1C1B1F",width:"90%",marginHorizontal:"4%",lineHeight:16}]}>I declare the above information is correct
              and true. I accept all the T&C mentioned on the page.</Text>
         </View>
         

@@ -14,11 +14,16 @@ import Verify from './src/verification/verify';
 import ProfileForm from './src/NewUser/ProfileForm';
 import DocumentForm from './src/NewUser/Documents';
 import Home from './src/HomeScreen/Home';
+import LoanAssistant from './src/components/LoanAssistant';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import LoanVerification from './src/verification/LoanVerified';
+import * as LocalAuthentication from 'expo-local-authentication';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
    <NavigationContainer>
    <Stack.Navigator>
    <Stack.Screen
@@ -52,19 +57,28 @@ export default function App() {
    component={Home}
    options={{ headerShown: false }}
  />
+
+ <Stack.Screen
+ name="Loan"
+ component={LoanAssistant}
+ options={{ headerShown: false }}
+/>
+
+<Stack.Screen
+ name="VerifiedLoan"
+ component={LoanVerification}
+ options={{ headerShown: false }}
+/>
    
- {
-  /**
-   *<Stack.Screen
-     name="Screen3"
+ <Stack.Screen
+     name="Guidliness"
      component={Intro}
      options={{ headerShown: false }}
    />
-   * 
-   */
- }
+   
 
  </Stack.Navigator>
    </NavigationContainer>
+   </GestureHandlerRootView>
   );
 }

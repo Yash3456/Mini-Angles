@@ -39,29 +39,37 @@ const Verify = ({navigation}) => {
             style={[styles.input, { borderColor: `${selected === true ? "#FE804D" : "black" }`}]}
             placeholderTextColor={Colors.gray}
             value={countryCode[0]}
+            keyboardType='numeric'
             onChangeText={()=> setCountryCode[0]}
             onPress={()=> setselected(true)}
+            maxLength={1}
           /> 
           <TextInput
             style={[styles.input, { borderColor: `${selected === true ? "#FE804D" : "black" }`}]}
             placeholderTextColor={Colors.gray}
             value={countryCode[1]}
+            keyboardType='numeric'
             onChangeText={()=> setCountryCode[1]}
             onPress={()=> setselected(true)}
+            maxLength={1}
           /> 
           <TextInput
             style={[styles.input, { borderColor: `${selected === true ? "#FE804D" : "black" }`}]}
             placeholderTextColor={Colors.gray}
             value={countryCode[2]}
+            keyboardType='numeric'
             onChangeText={()=> setCountryCode[2]}
             onPress={()=> setselected(true)}
+            maxLength={1}
           /> 
           <TextInput
             style={[styles.input, { borderColor: `${selected === true ? "#FE804D" : "black" }`}]}
             placeholderTextColor={Colors.gray}
             value={countryCode[3]}
+            keyboardType='numeric'
             onChangeText={()=> setCountryCode[3]}
             onPress={()=> setselected(true)}
+            maxLength={1}
           />
           
         </View>

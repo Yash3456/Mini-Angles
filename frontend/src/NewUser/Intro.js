@@ -15,20 +15,6 @@ import ModalButtton from '../components/ModalButtton';
 
 const Intro = ({ navigation }) => {
 
-  // const [fontsLoaded, fontError] = useFonts({
-  //   'Poppins': require('../assets/Fonts/Poppins/Poppins-Bold.ttf'),
-  // });
-
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded || fontError) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded, fontError]);
-
-  // if (!fontsLoaded && !fontError) {
-  //   return null;
-  // }
-
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -49,8 +35,7 @@ const Intro = ({ navigation }) => {
 
   const handlerpress = async () => {
     if (currentIndex === Slides.length - 1) {
-      console.log("ENd");
-       navigation.navigate("Screen2");
+       navigation.navigate("Home");
       return;
     }
 
