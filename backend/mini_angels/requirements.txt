@@ -1,4 +1,4 @@
-Django
+Django==4.2
 django-cors-headers
 django-crispy-forms
 djangorestframework
