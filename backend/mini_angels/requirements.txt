@@ -3,4 +3,3 @@ django-cors-headers
 django-crispy-forms
 djangorestframework
 sinch
-mysqlclient
