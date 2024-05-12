@@ -4,22 +4,23 @@ from rest_framework.response import Response
 from sinch import SinchClient
 import random
 
-from .models import (
-    OtpVerification,
-    BorrowerProfile
+from .ModelInterface import (
+    BorrowerProfileModel,
+    OtpVerificationModel,
+    LoanApplicationModel
+)
+
+from .ModelField import (
+    BorrowerProfileFields,
+    OtpVerificationFields,
+    LoanApplicationFields
 )
 
 @api_view(["POST"])
 def verify_mobile(request):
-    mobile       = request.data.get("mobile")
-    BorrowerProfile().save(mobile,
-                           "",
-                           "",
-                           "",
-                           "",
-                           0)
-
+    print("Triggered")
     try:
+        mobile       = request.data.get("mobile")
         otp = random.randint(1000,9999)
 
         sinch_client = SinchClient(
@@ -36,7 +37,7 @@ def verify_mobile(request):
             delivery_report="none"
         )
 
-        OtpVerification().save(mobile, otp)
+        OtpVerificationModel().insert(OtpVerificationFields(mobile, otp))
 
         print(send_batch_response)
     except Exception as err:
@@ -47,11 +48,11 @@ def verify_mobile(request):
 
 @api_view(["POST"])
 def verify_otp(request):
-    mobile       = request.data.get("mobile")
-    otp          = request.data.get("otp")
-
     try:
-        otp_verifications = OtpVerification().query(mobile=mobile)
+        mobile       = request.data.get("mobile")
+        otp          = request.data.get("otp")
+
+        otp_verifications = OtpVerificationModel().query({"mobile":mobile})
         otp_verified = False
 
         for otp_verification in otp_verifications:
@@ -61,7 +62,7 @@ def verify_otp(request):
         if otp_verified:
            Response({"message": "Successfully verified OTP"})
 
-        OtpVerification().delete(mobile=mobile)
+        OtpVerificationModel().delete({"mobile": mobile})
     except Exception as err:
         err_msg = "Failed to verify OTP - {}".format(err)
         return Response({"message": err_msg}, status=500)
@@ -70,22 +71,40 @@ def verify_otp(request):
 
 @api_view(["POST"])
 def save_profile(request):
-    mobile           = request.data.get("mobile")
-    first_name       = request.data.get("first_name")
-    last_name        = request.data.get("last_name")
-    education        = request.data.get("education")
-    employment_type  = request.data.get("employment_type")
-    monthly_income   = request.data.get("monthly_income")
-
-    BorrowerProfile().save(mobile,
-                           first_name,
-                           last_name,
-                           education,
-                           employment_type,
-                           monthly_income)
-
     try:
-        print(first_name, last_name)
+        mobile           = request.data.get("mobile")
+        first_name       = request.data.get("first_name")
+        last_name        = request.data.get("last_name")
+        education        = request.data.get("education")
+        employment_type  = request.data.get("employment_type")
+        monthly_income   = request.data.get("monthly_income")
+
+        BorrowerProfileModel().insert(BorrowerProfileFields(mobile,
+                                first_name,
+                                last_name,
+                                education,
+                                employment_type,
+                                monthly_income))
+    except Exception as err:
+        err_msg = "Failed to generate data values file - {}".format(err)
+        return Response({"message": err_msg}, status=500)
+
+    return Response({"message": "Saved user profile"})
+
+@api_view(["POST"])
+def loan_application(request):
+    try:
+        mobile           = request.data.get("mobile")
+        loan_amount      = request.data.get("loan_amount")
+        period           = request.data.get("period")
+        approval         = "Approved"
+        lender           = ""
+
+        LoanApplicationModel().insert(LoanApplicationFields(mobile,
+                            loan_amount,
+                            period,
+                            approval,
+                            lender))
     except Exception as err:
         err_msg = "Failed to generate data values file - {}".format(err)
         return Response({"message": err_msg}, status=500)

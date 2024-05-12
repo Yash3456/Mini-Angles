@@ -1,0 +1,18 @@
+{
+    "builds": [
+        {
+            "src": "mini_angels/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLamdaSize": "15mb",
+                "runtime": "python3.11"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "mini_angels/wsgi.py"
+        }
+    ]
+}

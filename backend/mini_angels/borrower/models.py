@@ -19,7 +19,7 @@ class OtpVerification(models.Model):
     otp             = models.PositiveIntegerField()
 
 class LoanApplication(models.Model):
-    borrower  = models.ForeignKey(BorrowerProfile, on_delete=models.CASCADE)
+    borrower  = models.PositiveIntegerField()
     amount    = models.CharField(max_length=100)
     period    = models.PositiveIntegerField()
     approval  = models.CharField(max_length=100)
