@@ -4,6 +4,13 @@
 
 # yum install -y mysql
 
+yum remove -y python3.12
+
+wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tar.xz
+./configure --enable-loadable-sqlite-extensions --enable-optimizations
+make
+make install
+
 yum update
 
 yum install -y sqlite-devel
