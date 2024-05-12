@@ -3,6 +3,7 @@
 # yum list | grep sqlite
 
 # yum install -y mysql
+pip3 install --upgrade pip
 
 pip3 install -r requirements.txt --user
 
