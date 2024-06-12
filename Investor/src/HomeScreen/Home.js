@@ -98,7 +98,7 @@ const Home = ({navigation}) => {
        <View style={{flex:1,backgroundColor:"#ffffff",width:"98%",borderRadius:20,padding:20,maxHeight:"90%"}}>
         
         <View style={{flex:1,flexDirection:"row",alignItems:"center",justifyContent:"center",maxHeight:"10%"}}>
-         <Text style={{fontSize:20,fontWeight:"600"}}>Biometric Band</Text>
+         <Text style={{fontSize:20,fontWeight:"600"}}>Biometric Bond</Text>
         </View>
 
         <View style={{marginTop:18}}>
